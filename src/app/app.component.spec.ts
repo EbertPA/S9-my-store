@@ -30,6 +30,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('my-store app is running!');
+    // expect(compiled.querySelector('.content span')?.textContent).toContain('my-store app is running!');
+    // expect(compiled.querySelector('span')?.textContent).toContain('my-store app is running!');
+    expect(compiled.querySelector('router-outlet')?.textContent).toContain('');
   });
 });

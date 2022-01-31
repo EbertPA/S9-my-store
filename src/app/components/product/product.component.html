@@ -1,0 +1,7 @@
+<!-- <div> -->
+  <!-- <app-image (loaded)="onLoaded($event)" [img]="product.image"></app-image> -->
+  <app-image [img]="product.image"></app-image>
+  <h2>{{product.price | currency:'€'}}</h2>
+  <p>{{product.title}}</p>
+  <button (click)="addProductToCart()">Add cart</button>
+<!-- </div> -->

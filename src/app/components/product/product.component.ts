@@ -9,12 +9,7 @@ import { Product } from '../../models/product.model';
 })
 export class ProductComponent implements OnInit {
 
-  // @Input() img: string = '';
-  // @Output() loaded = new EventEmitter<string>();
-
   @Output() addProduct = new EventEmitter<Product>();
-
-  // imageDefault: string = '../../../assets/images/default.png';
 
   @Input() product: Product = {
     id: '',
@@ -33,10 +28,6 @@ export class ProductComponent implements OnInit {
   addProductToCart() {
     this.addProduct.emit(this.product);
   }
-
-  // onLoaded(img: string) {
-  //   console.log('log Padre ',img);
-  // }
 
 
 }

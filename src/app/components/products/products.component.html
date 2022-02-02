@@ -1,4 +1,4 @@
-<!-- <app-header></app-header> -->
+<app-header></app-header>
 <!-- <p>La cantidad {{ myShopingCart.length }} Total {{ total }}</p> -->
 <div class="products--grid">
   <app-product *ngFor="let product of products" [product]="product" (addProduct)="addToShoppingCart($event)"></app-product>

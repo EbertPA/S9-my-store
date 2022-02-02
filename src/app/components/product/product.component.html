@@ -1,7 +1,5 @@
-<!-- <div> -->
-  <app-image [img]="product.image"></app-image>
-  <!-- <p>{{product.title | slice:0:25}}</p> -->
-  <p>{{ product.title }}</p>
-  <h2>{{ product.price | currency:'€' }}</h2>
-  <button (click)="addProductToCart()">Add cart</button>
-<!-- </div> -->
+<app-image [img]="product.image"></app-image>
+<p>{{ product.title }}</p>
+<h2>{{ product.price | currency:'€' }}</h2>
+<button (click)="addProductToCart()">Add cart</button>
+<a [routerLink]="['/products',product.id]">Details</a>

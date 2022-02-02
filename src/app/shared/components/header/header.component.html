@@ -20,8 +20,9 @@
   <div class="side-menu" [class.active]="showMenu">
     <button (click)="toggleMenu()">Close</button>
     <ul>
-      <li><a href="">All</a></li>
-      <li><a href="">Clothes</a></li>
+      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+      <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active">Clothes</a></li>
       <li><a href="">Electronics</a></li>
     </ul>
   </div>
@@ -41,8 +42,12 @@
         <img src="../../../assets/svg/logo_yard_sale.svg" alt="logo">
       </a> -->
       <ul>
-        <li><a href="">All</a></li>
+        <!-- <li><a href="">All</a></li>
         <li><a href="">Clothes</a></li>
+        <li><a href="">Electronics</a></li> -->
+        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
         <li><a href="">Electronics</a></li>
       </ul>
     </nav>

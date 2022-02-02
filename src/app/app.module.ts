@@ -9,13 +9,19 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ImageComponent } from './components/image/image.component';
 import { SharedModule } from './shared/shared.module';
+import { HomeComponent } from './components/home/home.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     ProductsComponent,
-    ImageComponent
+    ImageComponent,
+    HomeComponent,
+    ContactComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

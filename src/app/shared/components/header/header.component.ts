@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { StoreService } from '../../../services/store.service';
+import { StoreService } from './../../../services/store.service';
 
 @Component({
   selector: 'app-header',

@@ -4,25 +4,27 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { BannerComponent } from './components/banner/banner.component';
+// import { BannerComponent } from '../home/components/banner/banner.component';
 import { LayoutComponent } from './components/layout/layout.component';
 
+import { MaterialModule } from './../material/material.module'
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    BannerComponent,
+    // BannerComponent,
     LayoutComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MaterialModule
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    BannerComponent
+    // BannerComponent
   ]
 })
 export class SharedModule { }

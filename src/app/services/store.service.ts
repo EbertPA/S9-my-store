@@ -26,20 +26,6 @@ export class StoreService {
     return this.myShopingCart
   }
 
-  getProduct(id: string) {
-    console.log('id:',id,' ', typeof(id));
-    // console.log(this.myShopingCart);
-    // this.myShopingCart.map(item => {
-    //   if(item.id === id){
-    //     console.log(item);
-    //   }else{
-    //     console.log('NO COINCIDE');
-    //   }
-    //   console.log(item.id);
-    // });
-    return this.myShopingCart.find(item => id === item.id);
-  }
-
   getTotal() {
     return this.myShopingCart.reduce((sum, item) => sum+item.price,0);
   }

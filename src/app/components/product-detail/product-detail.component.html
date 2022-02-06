@@ -1,5 +1,5 @@
 <div>
-  <img [src]="product!.image" alt="">
+  <app-image [img]="product.image"></app-image>
 </div>
 <div>
   <ul>
@@ -8,3 +8,6 @@
   </ul>
   <p>{{ product!.description }}</p>
 </div>
+<button (click)="createProduct()">Create</button>
+<button (click)="updateProduct()">Update</button>
+<button (click)="deleteProduct()">Delete</button>

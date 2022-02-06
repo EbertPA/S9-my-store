@@ -11,7 +11,7 @@ import { ProductsService } from '../../services/products.service';
 export class ProductsComponent implements OnInit {
 
   // My product list
-  myShopingCart: Product[] = [];
+  // myShopingCart: Product[] = [];
 
   total:number = 0;
 

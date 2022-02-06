@@ -1,29 +1,67 @@
+<mat-toolbar color="primary">
+  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button> -->
+  <mat-toolbar-row>
+    <div class="row between-xs middle-xs header-center">
+      <span>Logo</span>
+      <nav>
+        <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+        <a mat-button routerLink="/products" routerLinkActive="active">Products</a>
+        <a mat-button routerLink="/contact" routerLinkActive="active">Clothes</a>
+        <a mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
+      </nav>
+      <!-- <a mat-raised-button> -->
+        <!-- <mat-icon>
+          account_circle
+        </mat-icon> -->
+      <!-- </a> -->
+      <a mat-raised-button>
+        <mat-icon matBadge="4" matBadgeColor="warn" [matBadgeHidden]="counter===0">shopping_bag</mat-icon>
+        <!-- Carrito -->
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 <div class="show-mobile">
   <div>
-    <button (click)="toggleMenu()">
-      <img src="../../../assets/svg/icon_menu.svg" alt="menu">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
+      <mat-icon>menu</mat-icon>
     </button>
+
+    <!-- <button (click)="toggleMenu()">
+      <img src="../../../assets/svg/icon_menu.svg" alt="menu">
+    </button> -->
     <a href="">
       <img src="../../../assets/svg/logo_yard_sale.svg" alt="logo">
     </a>
-  <div class="info">
-    <div class="account">User</div>
-    <div class="cart">
-      <a href="">
-        <img src="../../../assets/svg/icon_shopping_cart.svg" alt="logo">
+    <div class="info">
+      <a routerLink="/contact">
+        <mat-icon>
+          account_circle
+        </mat-icon>
       </a>
-      <span class="counter">{{ counter }}</span>
+
+      <div class="account">User</div>
+      <div class="cart">
+        <a href="">
+          <img src="../../../assets/svg/icon_shopping_cart.svg" alt="logo">
+        </a>
+        <span class="counter">{{ counter }}</span>
+      </div>
     </div>
-  </div>
 
   </div>
   <div class="side-menu" [class.active]="showMenu">
-    <button (click)="toggleMenu()">Close</button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <!-- <button (click)="toggleMenu()">Close</button> -->
     <ul>
       <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
       <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
       <li><a routerLink="/contact" routerLinkActive="active">Clothes</a></li>
-      <li><a href="">Electronics</a></li>
+      <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
     </ul>
   </div>
 </div>
@@ -36,24 +74,27 @@
 
     </div>
     <nav>
-      <!-- <h5>Buscar:</h5> -->
       <input type="text" placeholder="Buscar" (keyup.enter)="buscar()" #txtBuscar>
-      <!-- <a class="logo" href="">
-        <img src="../../../assets/svg/logo_yard_sale.svg" alt="logo">
-      </a> -->
       <ul>
-        <!-- <li><a href="">All</a></li>
-        <li><a href="">Clothes</a></li>
-        <li><a href="">Electronics</a></li> -->
         <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
         <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
         <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
-        <li><a href="">Electronics</a></li>
+        <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
       </ul>
     </nav>
     <div class="info">
+      <a routerLink="/contact">
+        <mat-icon>
+          account_circle
+        </mat-icon>
+      </a>
+
       <div class="account">ebert@gmail.com</div>
+
       <div class="cart">
+        <!-- <mat-icon>
+          shopping_bag
+        </mat-icon> -->
         <a href="">
           <img src="../../../assets/svg/icon_shopping_cart.svg" alt="logo">
         </a>

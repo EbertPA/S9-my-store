@@ -1,5 +1,30 @@
-<app-image [img]="product.image"></app-image>
+<mat-card>
+  <div class="crop-image">
+    <app-image [img]="product.image"></app-image>
+  </div>
+  <mat-card-header>
+    <mat-card-title>{{ product.title | slice:0:10 }}</mat-card-title>
+    <mat-card-subtitle>{{ product.price | currency:'€' }}</mat-card-subtitle>
+  </mat-card-header>
+  <!-- <mat-card-content>
+    <p>{{ product.description }}</p>
+  </mat-card-content> -->
+  <!-- <div class="row between-xs"> -->
+  <!-- <div class="row between-xs center-xs around-sm"> -->
+  <div class="row end-xs around-sm">
+    <a mat-raised-button [routerLink]="['/products',product.id]">Details</a>
+    <button mat-raised-button color="primary" (click)="addProductToCart()">Add cart</button>
+
+  </div>
+  <!-- <mat-card-actions class="row around-xs around-md">
+    <a mat-raised-button [routerLink]="['/products',product.id]">Details</a>
+    <button mat-raised-button color="primary" (click)="addProductToCart()">Add cart</button>
+  </mat-card-actions> -->
+
+  <!-- <app-image [img]="product.image"></app-image>
 <p>{{ product.title }}</p>
 <h2>{{ product.price | currency:'€' }}</h2>
-<button (click)="addProductToCart()">Add cart</button>
-<a [routerLink]="['/products',product.id]">Details</a>
+<button mat-raised-button color="primary" (click)="addProductToCart()">Add cart</button>
+<a [routerLink]="['/products',product.id]">Details</a> -->
+
+</mat-card>

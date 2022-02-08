@@ -17,7 +17,7 @@
         </mat-icon> -->
       <!-- </a> -->
       <a mat-raised-button>
-        <mat-icon matBadge="4" matBadgeColor="warn" [matBadgeHidden]="counter===0">shopping_bag</mat-icon>
+        <mat-icon routerLink="/order" [matBadge]="counter" matBadgeColor="warn" [matBadgeHidden]="counter===0">shopping_bag</mat-icon>
         <!-- Carrito -->
       </a>
     </div>
@@ -43,11 +43,19 @@
       </a>
 
       <div class="account">User</div>
-      <div class="cart">
-        <a href="">
+      <div class="cart" >
+        <a routerLink="/order">
           <img src="../../../assets/svg/icon_shopping_cart.svg" alt="logo">
         </a>
-        <span class="counter">{{ counter }}</span>
+
+      <!-- <a mat-raised-button> -->
+        <!-- <mat-icon matBadge="4" matBadgeColor="warn" [matBadgeHidden]="counter===0">shopping_bag</mat-icon> -->
+        <!-- Carrito -->
+      <!-- </a> -->
+        <span class="counter" *ngIf="counter > 0">{{ counter }}</span>
+        <!-- <span class="counter"> -->
+          <!-- <mat-icon class="counter" [matBadge]="counter" matBadgeColor="warn" [matBadgeHidden]="counter===0">shopping_bag</mat-icon> -->
+        <!-- </span> -->
       </div>
     </div>
 
@@ -95,10 +103,10 @@
         <!-- <mat-icon>
           shopping_bag
         </mat-icon> -->
-        <a href="">
+        <a routerLink="/order">
           <img src="../../../assets/svg/icon_shopping_cart.svg" alt="logo">
         </a>
-        <span class="counter">{{ counter }}</span>
+        <span class="counter"  *ngIf="counter > 0">{{ counter }}</span>
       </div>
     </div>
   </div>

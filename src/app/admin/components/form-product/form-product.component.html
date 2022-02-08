@@ -1,0 +1,116 @@
+<form [formGroup]="form" (ngSubmit)="saveProduct($event)">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Producto</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input placeholder="Id" formControlName="id" matInput type="text">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input placeholder="Title" formControlName="title" matInput type="text">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input placeholder="Price" formControlName="price" matInput type="number">
+          </mat-form-field>
+          <p *ngIf="form.get('price')?.touched && form.get('price')?.hasError('required')">Dato no válido</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <textarea placeholder="Description" formControlName="description" matInput></textarea>
+            <p *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">Dato no válido</p>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
+          <!-- <img *ngIf="(image$ | async) as image" [src]="image" alt=""> -->
+          <!-- <input type="file" (change)="uploadFile($event)"> -->
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Guardar</button>
+    </mat-card-actions>
+
+  </mat-card>
+
+
+</form>
+
+
+<!-- <form [formGroup]="form">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Producto</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input placeholder="Id" formControlName="id" matInput type="text">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input formControlName="title" matInput type="text" placeholder="Title">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input formControlName="price" matInput type="number">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <textarea formControlName="description" matInput placeholder="Texto"></textarea>
+            <input formControlName="description" mat-input type="text">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs">
+          <mat-form-field>
+            <input formControlName="description" mat-input type="text">
+          </mat-form-field>
+        </div>
+      </div>
+
+
+
+
+    </mat-card-content>
+  </mat-card>
+
+</form> -->

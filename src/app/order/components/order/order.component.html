@@ -1,0 +1,87 @@
+<mat-stepper orientation="vertical" #stepper>
+
+  <mat-step>
+    <ng-template matStepLabel>Carrito</ng-template>
+    <p *ngIf="products.length === 0">No ha seleccionado ningún producto.</p>
+    <div class="row end-xs" *ngFor="let product of products">
+      <div class="col-xs-12 col-sm-3 col-md-4">
+        <div class="box">
+          <!-- <div class="crop-image"> -->
+            <!-- <app-image [img]="product.image"></app-image> -->
+          <!-- </div> -->
+          <img [src]="product.image" [alt]="product.title" class="image">
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-4">
+        <div class="box">
+          {{ product.title}}
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-3 col-md-4">
+        <div class="box">
+          {{ product.price | currency:"€"}}
+        </div>
+      </div>
+
+    </div>
+    <hr/>
+    <div class="row end-xs" *ngIf="products.length !== 0">
+    <!-- <div *ngIf="products.length !== 0"> -->
+      <div class="col-xs-12">
+        <div class="box">
+         <strong>Importe total:</strong> {{ total | currency:"€" }}
+        </div>
+      </div>
+
+      <button mat-button color="primary" matStepperNext>Siguiente</button>
+    <!-- </div> -->
+  </div>
+  </mat-step>
+
+  <mat-step [stepControl]="formName" [editable]="isEditable">
+    <form [formGroup]="formName">
+      <ng-template matStepLabel>Datos personales</ng-template>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Dirección</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Calle/Avenida # , Provincia, Ciudad" required>
+      </mat-form-field>
+
+      <div>
+        <button mat-button color="primary" matStepperPrevious>Volver</button>
+        <button mat-button color="primary" matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="formCard" [editable]="isEditable">
+    <form [formGroup]="formCard">
+      <ng-template matStepLabel>Pago</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Número de tarjeta</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Credit card number" required>
+      </mat-form-field>
+      <div>
+        <button mat-button color="primary" matStepperPrevious>Volver</button>
+        <button mat-button color="primary" matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Confirmación</ng-template>
+    <p>Pedido realizado</p>
+    <div>
+      <button mat-button color="primary" matStepperPrevious>Volver</button>
+      <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+
+</mat-stepper>

@@ -14,6 +14,7 @@
   <div class="row end-xs around-sm">
     <a mat-raised-button [routerLink]="['/products',product.id]">Details</a>
     <button mat-raised-button color="primary" (click)="addProductToCart()">Add cart</button>
+    <button mat-raised-button color="primary" [disabled]="wasAddToCart" (click)="addProductToCart()">Add cart</button>
 
   </div>
   <!-- <mat-card-actions class="row around-xs around-md">

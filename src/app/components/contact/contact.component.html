@@ -1,2 +1,22 @@
-<app-header></app-header>
-<p>contact works!</p>
+<div class="row center-xs">
+  <div class="col-xs-12">
+
+    <h1>¿En qué te podemos ayudar?</h1>
+    <div class="box">
+      <h3>Subscribete</h3>
+      <form>
+        <mat-form-field>
+          <input matInput [formControl]="emailContact" placeholder="Digite su email" type="email">
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" [disabled]="emailContact.invalid"
+            (click)="sendEmail()">Enviar</button>
+        </div>
+        <mat-hint *ngIf="emailContact.invalid && emailContact.dirty">
+          <p><small>El email no es válido</small></p>
+        </mat-hint>
+      </form>
+    </div>
+
+  </div>
+</div>

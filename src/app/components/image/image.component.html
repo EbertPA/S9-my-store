@@ -1,8 +1,6 @@
 <div class="crop-image">
-  <!-- <img (error)="imageError()" (load)="imageLoaded()" [src]="img" alt="" *ngIf="img; else elseImg"> -->
-  <!-- <img mat-card-image (error)="imageError()" (load)="imageLoaded()" [src]="img" alt="" *ngIf="img; else elseImg"> -->
-  <img (error)="imageError()" (load)="imageLoaded()" [src]="img" alt="" *ngIf="img; else elseImg">
+  <img (error)="imageError()" (load)="imageLoaded()" [src]="img" alt="Imagen" *ngIf="img; else elseImg">
   <ng-template #elseImg>
-    <img [src]="imageDefault" alt="">
+    <img [src]="imageDefault" alt="Imagen por defecto">
   </ng-template>
 </div>

@@ -1,7 +1,7 @@
-<!-- <app-header></app-header> -->
-<!-- <p>La cantidad {{ myShopingCart.length }} Total {{ total }}</p> -->
+<div class="row center-xs">
+  <mat-spinner *ngIf="showSpinner"></mat-spinner>
+</div>
 <div class="products--grid">
-  <mat-spinner *ngIf="products.length === 0"></mat-spinner>
-
-  <app-product *ngFor="let product of products" [product]="product" (addProduct)="addToShoppingCart($event)"></app-product>
+  <app-product *ngFor="let product of products" [product]="product" (addProduct)="addToShoppingCart($event)">
+  </app-product>
 </div>

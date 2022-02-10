@@ -1,61 +1,50 @@
-<mat-toolbar color="primary">
-  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button> -->
-  <mat-toolbar-row>
-    <div class="row between-xs middle-xs header-center">
-      <span>Logo</span>
-      <nav>
-        <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
-        <a mat-button routerLink="/products" routerLinkActive="active">Products</a>
-        <a mat-button routerLink="/contact" routerLinkActive="active">Clothes</a>
-        <a mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
-      </nav>
-      <!-- <a mat-raised-button> -->
-        <!-- <mat-icon>
-          account_circle
-        </mat-icon> -->
-      <!-- </a> -->
-      <a mat-raised-button>
-        <mat-icon routerLink="/order" [matBadge]="counter" matBadgeColor="warn" [matBadgeHidden]="counter===0">shopping_bag</mat-icon>
-        <!-- Carrito -->
-      </a>
+<div class="row around-xs center-xs barra">
+  <div class="col-xs-12 col-sm-4">
+    <div class="box">
+      <mat-icon>local_shipping</mat-icon>
+      Envío gratis a partir de 49€
     </div>
-  </mat-toolbar-row>
-</mat-toolbar>
+  </div>
+  <div class="col-xs-4 col-sm-4 oculto">
+    <div class="box">
+      <mat-icon>schedule</mat-icon>
+      Entrega en 24 horas
+    </div>
+  </div>
+  <div class="col-xs-4 col-sm-4 oculto">
+    <div class="box">
+      <mat-icon>sync</mat-icon>
+      Devolución de 365 días
+    </div>
+  </div>
+</div>
+
 <div class="show-mobile">
   <div>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
       <mat-icon>menu</mat-icon>
     </button>
-
-    <!-- <button (click)="toggleMenu()">
-      <img src="../../../assets/svg/icon_menu.svg" alt="menu">
-    </button> -->
-    <a href="">
-      <img src="../../../assets/svg/logo_yard_sale.svg" alt="logo">
+    <a routerLink="/home">
+      <img src="./../../../../assets/svg/logostoremovil.png" alt="logo">
     </a>
     <div class="info">
-      <a routerLink="/contact">
+      <a routerLink="/admin" *ngIf="!user">
         <mat-icon>
-          account_circle
+          perm_identity
         </mat-icon>
       </a>
 
-      <div class="account">User</div>
-      <div class="cart" >
+      <a routerLink="/admin" (click)="logout()" *ngIf="user">
+        <mat-icon>
+          logout
+        </mat-icon>
+      </a>
+
+      <div class="cart">
         <a routerLink="/order">
           <img src="../../../assets/svg/icon_shopping_cart.svg" alt="logo">
         </a>
-
-      <!-- <a mat-raised-button> -->
-        <!-- <mat-icon matBadge="4" matBadgeColor="warn" [matBadgeHidden]="counter===0">shopping_bag</mat-icon> -->
-        <!-- Carrito -->
-      <!-- </a> -->
         <span class="counter" *ngIf="counter > 0">{{ counter }}</span>
-        <!-- <span class="counter"> -->
-          <!-- <mat-icon class="counter" [matBadge]="counter" matBadgeColor="warn" [matBadgeHidden]="counter===0">shopping_bag</mat-icon> -->
-        <!-- </span> -->
       </div>
     </div>
 
@@ -64,50 +53,60 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
       <mat-icon>close</mat-icon>
     </button>
-    <!-- <button (click)="toggleMenu()">Close</button> -->
-    <ul>
-      <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-      <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active">Clothes</a></li>
-      <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
-    </ul>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/home" routerLinkActive="active" (click)="toggleMenu()">Home</a>
+      <a mat-list-item routerLink="/products" routerLinkActive="active" (click)="toggleMenu()">Products</a>
+      <a mat-list-item routerLink="/contact" routerLinkActive="active" (click)="toggleMenu()">Contact</a>
+      <a mat-list-item routerLink="/admin/products" routerLinkActive="active">Admin</a>
+    </mat-nav-list>
+    <a routerLink="/admin" (click)="logout()" *ngIf="user">
+      <mat-icon>
+        logout
+      </mat-icon>
+    </a>
+
   </div>
 </div>
 <div class="hide-mobile">
   <div>
     <div>
-      <a class="logo" href="">
-        <img src="../../../assets/svg/logo_yard_sale.svg" alt="logo">
+      <a class="logo" routerLink="/home">
+        <img src="./../../../../assets/svg/logostore.png" alt="logo">
       </a>
 
     </div>
     <nav>
-      <input type="text" placeholder="Buscar" (keyup.enter)="buscar()" #txtBuscar>
       <ul>
         <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
         <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
         <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
-        <li><a routerLink="/admin" routerLinkActive="active">Admin</a></li>
+        <li><a routerLink="/admin/products" routerLinkActive="active">Admin</a></li>
       </ul>
     </nav>
     <div class="info">
-      <a routerLink="/contact">
+
+      <a routerLink="/admin" *ngIf="!user">
         <mat-icon>
-          account_circle
+          perm_identity
         </mat-icon>
       </a>
 
-      <div class="account">ebert@gmail.com</div>
+      <div class="user">
+        <a routerLink="/admin" (click)="logout()" *ngIf="user">
+          <mat-icon>
+            logout
+          </mat-icon>
+        </a>
+        <!-- <p *ngIf="user">{{ user }}</p> -->
+      </div>
 
       <div class="cart">
-        <!-- <mat-icon>
-          shopping_bag
-        </mat-icon> -->
         <a routerLink="/order">
           <img src="../../../assets/svg/icon_shopping_cart.svg" alt="logo">
         </a>
-        <span class="counter"  *ngIf="counter > 0">{{ counter }}</span>
+        <span class="counter" *ngIf="counter > 0">{{ counter }}</span>
       </div>
+
     </div>
   </div>
 </div>

@@ -11,9 +11,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class OrderComponent implements OnInit {
 
+  imageDefault: string = './../../../../assets/images/default.png';
+
   formName!: FormGroup;
   formCard!: FormGroup;
-  isEditable = true;
+  isEditable = false;
   total:number = 0;
 
   products: Product[] = [];
@@ -27,7 +29,9 @@ export class OrderComponent implements OnInit {
     this.storeService.myCart$.subscribe( product => {
       this.products = product;
     });
+
     this.total = this.storeService.getTotal();
+
     this.formName = this.formBuilder.group({
       firstCtrl: ['', Validators.required],
       secondCtrl: ['', Validators.required],
@@ -35,6 +39,14 @@ export class OrderComponent implements OnInit {
     this.formCard = this.formBuilder.group({
       secondCtrl: ['', Validators.required],
     });
+  }
+
+  imageError(event: any){
+    event.target.src = this.imageDefault;
+  }
+
+  cleanShoppingCart(){
+    this.storeService.resetShoppingCart();
   }
 
 }

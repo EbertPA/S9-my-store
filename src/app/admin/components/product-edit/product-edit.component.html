@@ -6,14 +6,6 @@
 
     <mat-card-content>
 
-      <!-- <div class="row">
-        <div class="col-xs">
-          <mat-form-field>
-            <input placeholder="Id" formControlName="id" matInput type="text">
-          </mat-form-field>
-        </div>
-      </div>
- -->
       <div class="row">
         <div class="col-xs">
           <mat-form-field>
@@ -37,13 +29,6 @@
             <textarea placeholder="Description" formControlName="description" matInput></textarea>
             <p *ngIf="form.get('description')?.touched && form.get('description')?.hasError('required')">Dato no válido</p>
           </mat-form-field>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs">
-          <!-- <img *ngIf="(image$ | async) as image" [src]="image" alt=""> -->
-          <!-- <input type="file" (change)="uploadFile($event)"> -->
         </div>
       </div>
 

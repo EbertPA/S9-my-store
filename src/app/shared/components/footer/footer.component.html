@@ -1,9 +1,7 @@
-<!-- <p>footer works!</p> -->
 <footer>
-  <div class="container">
+  <div>
     <div class="row">
-      <!-- <div class="col-xs-12 col-md4- col-md-4"> -->
-      <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="col-xs-12 col-sm-4 col-md-4">
         <div class="box">
           <h3>Productos</h3>
           <ul>
@@ -19,7 +17,7 @@
           </ul>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-3 col-md-4">
+      <div class="col-xs-12 col-sm-4 col-md-4">
         <div class="box">
           <h3>Acerca de Yard Sale</h3>
           <ul>
@@ -28,14 +26,16 @@
           </ul>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="col-xs-12 col-sm-4 col-md-4">
         <div class="box">
           <h3>Subscripción</h3>
           <mat-form-field>
             <input matInput [formControl]="email" placeholder="Digite su email" type="email">
           </mat-form-field>
-          <button mat-raised-button [disabled]="email.invalid" (click)="sendEmail()">Send</button>
-          <mat-hint *ngIf="email.invalid && email.dirty"><p><small>El email no es válido</small></p></mat-hint>
+          <button mat-raised-button [disabled]="email.invalid" (click)="sendEmail()">Enviar</button>
+          <mat-hint *ngIf="email.invalid && email.dirty">
+            <p><small>El email no es válido</small></p>
+          </mat-hint>
         </div>
       </div>
     </div>

@@ -1,36 +1,49 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { StoreService } from './../../../services/store.service';
+import { AuthService } from '../../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
-  @ViewChild('txtBuscar') txtBuscar!:ElementRef<HTMLInputElement>;
+  @ViewChild('txtBuscar') txtBuscar!: ElementRef<HTMLInputElement>;
 
   showMenu: boolean = false;
-  counter:number = 0;
+  counter: number = 0;
+
+  user: string | null | undefined = '';
 
   constructor(
-    private storeService: StoreService
-  ) { }
+    private storeService: StoreService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.storeService.myCart$.subscribe( products => {
+    this.storeService.myCart$.subscribe((products) => {
       this.counter = products.length;
     });
+    this.viewUser();
   }
 
   toggleMenu() {
     this.showMenu = !this.showMenu;
-    console.log('toggleMenu');
   }
 
-  buscar() {
-    const valor = this.txtBuscar.nativeElement.value;
-    console.log(valor);
-    this.txtBuscar.nativeElement.value = '';
+  logout() {
+    this.authService.logout().then(() => {
+      this.router.navigate(['./home']);
+    });
   }
+
+  viewUser() {
+    this.authService.loginUser()
+    .forEach(item => {
+      this.user = item?.email;
+    });
+  }
+
 }

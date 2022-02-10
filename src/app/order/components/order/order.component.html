@@ -6,10 +6,7 @@
     <div class="row end-xs" *ngFor="let product of products">
       <div class="col-xs-12 col-sm-3 col-md-4">
         <div class="box">
-          <!-- <div class="crop-image"> -->
-            <!-- <app-image [img]="product.image"></app-image> -->
-          <!-- </div> -->
-          <img [src]="product.image" [alt]="product.title" class="image">
+          <img (error)="imageError($event)" [src]="product.image" [alt]="product.title">
         </div>
       </div>
 
@@ -28,7 +25,6 @@
     </div>
     <hr/>
     <div class="row end-xs" *ngIf="products.length !== 0">
-    <!-- <div *ngIf="products.length !== 0"> -->
       <div class="col-xs-12">
         <div class="box">
          <strong>Importe total:</strong> {{ total | currency:"€" }}
@@ -36,7 +32,6 @@
       </div>
 
       <button mat-button color="primary" matStepperNext>Siguiente</button>
-    <!-- </div> -->
   </div>
   </mat-step>
 
@@ -70,18 +65,14 @@
       </mat-form-field>
       <div>
         <button mat-button color="primary" matStepperPrevious>Volver</button>
-        <button mat-button color="primary" matStepperNext>Siguiente</button>
+        <button mat-button color="primary" matStepperNext (click)="cleanShoppingCart()">Confirmar</button>
       </div>
     </form>
   </mat-step>
 
   <mat-step>
     <ng-template matStepLabel>Confirmación</ng-template>
-    <p>Pedido realizado</p>
-    <div>
-      <button mat-button color="primary" matStepperPrevious>Volver</button>
-      <button mat-button color="warn" (click)="stepper.reset()">Reset</button>
-    </div>
+    <p>Pedido generado</p>
   </mat-step>
 
 </mat-stepper>

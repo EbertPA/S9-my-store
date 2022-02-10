@@ -7,8 +7,6 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { LayoutComponent } from './shared/components/layout/layout.component';
 
 import { AdminGuard } from './admin.guard';
-// import { AdminModule } from './admin/admin.module';
-// import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 
 const routes: Routes = [
   {
@@ -23,7 +21,6 @@ const routes: Routes = [
       {
         path: 'home',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
-        // component: HomeComponent
       },
       {
         path: 'products',
@@ -35,7 +32,6 @@ const routes: Routes = [
       },
       {
         path: 'contact',
-        canActivate: [AdminGuard],
         component: ContactComponent
       },
       {
@@ -46,8 +42,12 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [AdminGuard],
     loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
-    // component: ProductFormComponent
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: '**',

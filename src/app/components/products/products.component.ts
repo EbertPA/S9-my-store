@@ -10,25 +10,20 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductsComponent implements OnInit {
 
-  // My product list
-  // myShopingCart: Product[] = [];
-
   total:number = 0;
+  showSpinner: boolean = true;
 
   products: Product[] = [];
 
   constructor(
     private storeService: StoreService,
     private productsService: ProductsService
-  ) {
-    // this.myShopingCart = this.storeService.getShoppingCart();
-
-   }
+  ) {}
 
   ngOnInit(): void {
     this.productsService.getAllProducts()
     .subscribe( resp => {
-      console.log('items ', resp);
+      this.showSpinner = false;
       this.products = resp;
     });
   }
@@ -37,6 +32,5 @@ export class ProductsComponent implements OnInit {
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
   }
-
 
 }

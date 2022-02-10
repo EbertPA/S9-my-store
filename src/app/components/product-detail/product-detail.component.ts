@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/product.model';
+import { StoreService } from '../../services/store.service';
+
 
 @Component({
   selector: 'app-product-detail',
@@ -10,12 +12,12 @@ import { Product } from '../../models/product.model';
 })
 export class ProductDetailComponent implements OnInit {
 
-  // My product list
-  // myShopingCart: Product[] = [];
 
   products: Product[] = [];
 
   id:string = '';
+
+  idSelected: boolean = false;
 
   product: Product = {
     id: '',
@@ -28,61 +30,34 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private storeService: StoreService
   ) {}
 
   ngOnInit(): void {
+    this.products = this.storeService.getShoppingCart();
     this.route.params.subscribe((params: Params) => {
       const id = params.id;
-      console.log('ruta id: ', id);
       this.id = params.id;
       this.fetchProduct(id);
+      this.products.map(product => {
+        if(product.id == this.id){
+          this.idSelected = true;
+        }
+      });
+
     });
   }
 
   fetchProduct(id: string) {
     this.productsService.getProduct(id).subscribe((resp) => {
       this.product = resp;
-      console.log(this.product);
     });
   }
 
-  createProduct(){
-    const newProduct: Product = {
-      id: '222',
-      title: 'Nuevo desde angular',
-      image: 'assets/images/album.jpg',
-      price: 15400,
-      description: 'Desde angular',
-      category: 'Varios',
-    };
-    this.productsService.createProduct(newProduct)
-    .subscribe(resp => {
-      console.log(resp);
-    });
-  }
-
-  updateProduct() {
-    const updateProduct: Partial<Product> = {
-      id: '222',
-      title: 'Actualizado desde angular',
-      image: 'assets/images/album.jpg',
-      price: 150000,
-      description: 'Edicion',
-      category: 'Varios',
-    };
-    this.productsService.updateProduct('222',updateProduct)
-    .subscribe(resp => {
-      console.log(resp);
-    });
-  }
-
-  deleteProduct(){
-    this.productsService.deleteProduct(this.id)
-    .subscribe(resp => {
-      console.log(resp);
-    });
-
+  addToShoppingCart(product: Product) {
+    this.storeService.addProduct(product);
+    this.idSelected = true;
   }
 
 }

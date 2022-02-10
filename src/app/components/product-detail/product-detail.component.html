@@ -1,13 +1,32 @@
-<div>
-  <app-image [img]="product.image"></app-image>
+<div class="row center-xs">
+
+  <div class="col-xs-12 col-sm-5">
+    <div class="row middle-xs center-xs">
+      <div class="col-xs-10">
+      <div class="box">
+        <app-image [img]="product.image"></app-image>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-5">
+    <div class="box">
+      <div class="row start-xs">
+        <div class="col-xs">
+          <div>
+            <h2>{{ product!.title }}</h2>
+            <h3>{{ product!.price | currency:'€' }}</h3>
+            <h3>Descripción:</h3>
+            <p>{{ product!.description }}</p>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <button mat-raised-button color="primary" (click)="addToShoppingCart(product)" [disabled]="idSelected">Add
+            cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
-<div>
-  <ul>
-    <li>Nombre: {{ product!.title}}</li>
-    <li>Precio: {{ product!.price | currency:'€' }}</li>
-  </ul>
-  <p>{{ product!.description }}</p>
-</div>
-<button (click)="createProduct()">Create</button>
-<button (click)="updateProduct()">Update</button>
-<button (click)="deleteProduct()">Delete</button>

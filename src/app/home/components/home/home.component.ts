@@ -9,6 +9,7 @@ import Swiper from 'swiper';
 export class HomeComponent implements OnInit, AfterViewInit {
 
   mySwiper!: Swiper;
+  imageDefault: string = './../../../../assets/images/default.png';
 
   constructor() { }
 
@@ -17,6 +18,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
       this.mySwiper = new Swiper('.swiper-container');
+  }
+
+  imageError(event: any){
+    event.target.src = this.imageDefault;
   }
 
 }
